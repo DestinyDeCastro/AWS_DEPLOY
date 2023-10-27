@@ -1,2 +1,4 @@
 #!/bin/bash
-service httpd start
+
+# Iniciar el servicio de Apache
+systemctl start httpd
