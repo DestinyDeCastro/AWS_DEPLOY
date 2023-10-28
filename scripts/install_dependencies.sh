@@ -1,14 +1,16 @@
 #!/bin/bash
 
-# Navegar al directorio de la aplicación
-cd /var/www/html/AWS_DEPLOY
+# Actualizar el sistema operativo y paquetes
+sudo yum update -y
 
-# Actualizar Composer y las dependencias
-composer self-update
-composer install --no-interaction --prefer-dist
+# Instalar extensiones de PHP o software adicional necesario
+sudo yum install -y php-mysql  # Ejemplo: Instala la extensión para MySQL
+# Agrega más instalaciones según tus necesidades
 
-# Otros comandos para instalar dependencias adicionales si es necesario
-# Ejemplo: npm install, bower install, etc.
+# Reiniciar el servicio de PHP (dependiendo del servidor web)
+sudo systemctl restart php-fpm  # Ejemplo para PHP-FPM
 
-# Finalizar la instalación de dependencias
+# Agregar cualquier otro paso necesario para instalar dependencias
+
 echo "Dependencias instaladas con éxito"
+
