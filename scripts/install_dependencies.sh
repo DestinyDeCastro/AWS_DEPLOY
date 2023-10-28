@@ -1,21 +1,14 @@
 #!/bin/bash
-# Actualizar el sistema
-sudo apt update
-sudo apt upgrade -y
-# Lista de paquetes a instalar
-packages=("apache2")
 
-# Instalar paquetes
-for package in "${packages[@]}"; do
-  if ! dpkg -l | grep -q "ii  $package "; then
-    sudo apt install -y $package
-    if [ $? -ne 0 ]; then
-      echo "Error: No se pudo instalar el paquete $package."
-      exit 1
-    fi
-  else
-    echo "$package ya está instalado."
-  fi
-done
+# Navegar al directorio de la aplicación
+cd /var/www/html/AWS_DEPLOY
 
-echo "Instalación completada."
+# Actualizar Composer y las dependencias
+composer self-update
+composer install --no-interaction --prefer-dist
+
+# Otros comandos para instalar dependencias adicionales si es necesario
+# Ejemplo: npm install, bower install, etc.
+
+# Finalizar la instalación de dependencias
+echo "Dependencias instaladas con éxito"
